@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Manrope:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; background: #f7f6f4; }
+  * { box-sizing: border-box; }
+  a { color: #14110f; text-decoration: none; }
+  a:hover { color: #8d8378; }
+  ::selection { background: #14110f; color: #f7f6f4; }
+</style>
+</helmet>
+<div style="font-family: Manrope, system-ui, sans-serif; color: #14110f; background: #f7f6f4; overflow-x: hidden;">
+
+  <header style="position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 18px 6vw; flex-wrap: wrap; background: #16150f; backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: background 0.25s ease, border-color 0.25s ease;" data-nav="root">
+    <a href="#hero" data-nav="brand" style="display: flex; flex-direction: column; gap: 2px; line-height: 1; color: #f7f6f4;">
+      <span style="font-family: 'Playfair Display', serif; font-weight: 700; font-size: 22px; letter-spacing: 0.16em;">FERUM</span>
+      <span data-nav="tag" style="font-family: Manrope, sans-serif; font-size: 8px; letter-spacing: 0.34em; text-transform: uppercase; color: rgba(247,246,244,0.6);">Designed for Power</span>
+    </a>
+    <nav style="display: flex; align-items: center; flex-wrap: wrap; gap: 20px 30px;">
+      <div data-nav="links" style="display: flex; flex-wrap: wrap; gap: 14px 30px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(247,246,244,0.78);">
+        <a href="#o-nama" style="color: inherit;">Studio</a>
+        <a href="#usluge" style="color: inherit;">Training</a>
+        <a href="#lokacija" style="color: inherit;">Visit</a>
+      </div>
+      <a href="{{ telHref }}" data-nav="cta" style="display: inline-flex; align-items: center; padding: 12px 22px; min-height: 44px; background: #c9bea5; color: #16150f; border: none; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase" style-hover="background: #f7f6f4; color: #16150f;">Book a session</a>
+    </nav>
+  </header>
+
+  <section id="hero" data-screen-label="Hero" style="position: relative; height: 88vh; min-height: 560px; display: grid; place-items: center; background: #14110f;">
+    <div style="position: absolute; inset: 0;">
+      <image-slot id="arden-hero" src="uploads/young-man-doing-exercises-working-hard-gym-enjoying-his-training-process.jpg" shape="rect" fit="cover" placeholder="hero photo - studio, dark"></image-slot>
+    </div>
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,9,8,0.55) 0%, rgba(10,9,8,0.35) 45%, rgba(10,9,8,0.75) 100%); pointer-events: none;"></div>
+    <div style="position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 28px; padding: 0 6vw; pointer-events: none; width: 100%; max-width: 813px;">
+      <span style="font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: #c9bea5;">Private fitness studio · Chelsea, London</span>
+      <h1 style="margin: 0; font-family: Playfair Display; font-weight: 500; font-size: clamp(64px, 13vw, 190px); line-height: 0.9; letter-spacing: 0.12em; color: #f7f6f4">FERUM</h1>
+
+      <span style="font-family: Playfair Display; font-size: clamp(18px, 5vw, 42px); letter-spacing: 0.34em; text-transform: none; color: rgba(247,246,244,0.8); font-weight: 300">Designed for Power</span>
+      <p style="margin: 0; max-width: 460px; font-size: 15px; line-height: 1.7; color: rgba(247,246,244,0.72); text-wrap: pretty;">One-on-one training, a personal approach and real results - in a calm, private space, away from the crowds of a typical gym.</p><div style="display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; pointer-events: auto;">
+        <a href="{{ telHref }}" style="display: inline-flex; align-items: center; padding: 16px 30px; min-height: 48px; background: #f7f6f4; color: #14110f; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;" style-hover="background: #8d8378;">Call&nbsp;{{ phone }}</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="o-nama" data-screen-label="Studio" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: clamp(40px, 7vw, 110px); align-items: center; padding: clamp(80px, 12vw, 160px) 6vw;">
+    <div style="display: flex; flex-direction: column; gap: 28px; max-width: 620px;">
+      <span style="font-size: 10px; letter-spacing: 0.36em; text-transform: uppercase; color: #8d8378;">The studio</span>
+      <h2 style="margin: 0; font-family: Playfair Display; font-weight: 400; font-size: clamp(32px, 4.2vw, 56px); line-height: 1.12; letter-spacing: 0.01em">One client in the<br>room at a time.</h2>
+      <p style="margin: 0; font-size: 16px; line-height: 1.85; color: #514a44; text-wrap: pretty;">Ferum is a private fitness studio built around one-on-one training, with a personal approach and real, lasting results.</p>
+      <p style="margin: 0; font-size: 16px; line-height: 1.85; color: #514a44; text-wrap: pretty;">People come here to lose weight, change their shape, get their breathing back, or lift without their lower back complaining. We book by appointment only, so the studio stays quiet and the hour is yours.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 120px), 1fr)); gap: 24px; margin-top: 8px; padding-top: 32px; border-top: 1px solid rgba(20,17,15,0.12);">
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <span style="font-family: 'Playfair Display', serif; font-size: 30px;">1:1</span>
+          <span style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #8d8378;">Coach and client</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <span style="font-family: 'Playfair Display', serif; font-size: 30px;">60 min</span>
+          <span style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #8d8378;">Per session</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <span style="font-family: 'Playfair Display', serif; font-size: 30px;">Private</span>
+          <span style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #8d8378;">Closed floor</span>
+        </div>
+      </div>
+    </div>
+    <div style="height: clamp(380px, 46vw, 620px);">
+      <image-slot id="arden-about" src="uploads/strong-beautiful-athletic-woman-training-gym.jpg" shape="rect" fit="cover" radius="0" placeholder="coach at work / studio detail"></image-slot>
+    </div>
+  </section>
+
+  <section id="brojke" data-screen-label="Numbers" style="padding: clamp(36px, 5vw, 60px) 6vw; background: #efece7; border-top: 1px solid rgba(20,17,15,0.12); border-bottom: 1px solid rgba(20,17,15,0.12);">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 1px; background: rgba(20,17,15,0.12);">
+      <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 16px 24px; background: #efece7;">
+        <span style="font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(48px, 5vw, 56px); line-height: 1; color: #14110f;">6</span>
+        <span style="font-size: 10px; letter-spacing: 0.36em; text-transform: uppercase; color: #8d8378;">Years Running</span>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 16px 24px; background: #efece7;">
+        <span style="font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(48px, 5vw, 56px); line-height: 1; color: #14110f;">120+</span>
+        <span style="font-size: 10px; letter-spacing: 0.36em; text-transform: uppercase; color: #8d8378;">Private Clients Trained</span>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 16px 24px; background: #efece7;">
+        <span style="font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(48px, 5vw, 56px); line-height: 1; color: #14110f;">92%</span>
+        <span style="font-size: 10px; letter-spacing: 0.36em; text-transform: uppercase; color: #8d8378;">Client Retention Rate</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="usluge" data-screen-label="Training" style="padding: clamp(80px, 11vw, 150px) 6vw; background: #14110f; color: #f7f6f4;">
+    <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px; padding-bottom: 56px;">
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        <span style="font-size: 10px; letter-spacing: 0.36em; text-transform: uppercase; color: #c9bea5;">Training</span>
+        <h2 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(32px, 4.2vw, 56px); line-height: 1.12;">Three ways to work</h2>
+      </div>
+      <a href="{{ smsHref }}" style="display: inline-flex; align-items: center; padding: 14px 26px; min-height: 46px; border: 1px solid rgba(247,246,244,0.35); color: #f7f6f4; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;" style-hover="background: #f7f6f4; color: #14110f;">Text us</a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 1px; background: rgba(247,246,244,0.16);">
+      <div style="display: flex; flex-direction: column; gap: 18px; padding: 44px 36px 40px; background: #14110f;" style-hover="background: #1c1917;">
+        <span style="font-family: 'Playfair Display', serif; font-size: 13px; letter-spacing: 0.2em; color: #c9bea5;">01</span>
+        <h3 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 400; font-size: 26px;">Personal Training</h3>
+        <p style="margin: 0; font-size: 14px; line-height: 1.8; color: rgba(247,246,244,0.62); text-wrap: pretty;">A plan written for your body and your week. Your coach counts the reps, fixes the technique and writes down what you lifted, so week four is not a guess.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 18px; padding: 44px 36px 40px; background: #14110f;" style-hover="background: #1c1917;">
+        <span style="font-family: 'Playfair Display', serif; font-size: 13px; letter-spacing: 0.2em; color: #c9bea5;">02</span>
+        <h3 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 400; font-size: 26px;">Private Training</h3>
+        <p style="margin: 0; font-size: 14px; line-height: 1.8; color: rgba(247,246,244,0.62); text-wrap: pretty;">The whole floor for your hour. Door closed, nobody waiting behind you. Good for people who train better without an audience.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 18px; padding: 44px 36px 40px; background: #14110f;" style-hover="background: #1c1917;">
+        <span style="font-family: 'Playfair Display', serif; font-size: 13px; letter-spacing: 0.2em; color: #c9bea5;">03</span>
+        <h3 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 400; font-size: 26px;">Nutrition Coaching</h3>
+        <p style="margin: 0; font-size: 14px; line-height: 1.8; color: rgba(247,246,244,0.62); text-wrap: pretty;">We start from what you already eat and change a few things at a time. No meal plans you will abandon by Thursday.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="za-koga" data-screen-label="Who it is for" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 32px clamp(32px, 4vw, 56px); padding: clamp(56px, 8vw, 100px) 6vw;">
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+      <span style="font-size: 10px; letter-spacing: 0.36em; text-transform: uppercase; color: #8d8378;">Who it is for</span>
+      <h2 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(32px, 4.2vw, 52px); line-height: 1.12;">Ferum suits you if…</h2>
+
+
+      <div style="margin-top: 10px; width: 100%; max-width: 340px; aspect-ratio: 2 / 3;">
+        <image-slot id="arden-zakoga" src="uploads/beautiful-girl-is-engaged-gym.jpg" shape="rect" fit="cover" placeholder="client training"></image-slot>
+      </div><a href="{{ telHref }}" style="align-self: flex-start; display: inline-flex; align-items: center; margin-top: 6px; padding: 15px 28px; min-height: 46px; background: #14110f; color: #f7f6f4; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;" style-hover="background: #8d8378; color: #14110f;">Book a session</a>
+    </div>
+    <div style="display: flex; flex-direction: column;">
+      <div style="display: grid; grid-template-columns: 40px 1fr; gap: 24px; padding: 30px 0; border-top: 1px solid rgba(20,17,15,0.12);">
+        <span style="font-family: 'Playfair Display', serif; font-size: 15px; color: #8d8378;">I</span>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <h3 style="margin: 0; font-size: 17px; font-weight: 500;">You are starting from zero</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.75; color: #514a44;">You have never trained, or you stopped years ago. We spend the first sessions on how to move before we add load.</p>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: 40px 1fr; gap: 24px; padding: 30px 0; border-top: 1px solid rgba(20,17,15,0.12);">
+        <span style="font-family: 'Playfair Display', serif; font-size: 15px; color: #8d8378;">II</span>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <h3 style="margin: 0; font-size: 17px; font-weight: 500;">You train already and nothing moves</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.75; color: #514a44;">Same three lifts, same numbers since spring. You need a plan and someone watching the bar.</p>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: 40px 1fr; gap: 24px; padding: 30px 0; border-top: 1px solid rgba(20,17,15,0.12);">
+        <span style="font-family: 'Playfair Display', serif; font-size: 15px; color: #8d8378;">III</span>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <h3 style="margin: 0; font-size: 17px; font-weight: 500;">No crowds or pressure</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.75; color: #514a44;">No crowd, no mirrors full of strangers, no phone cameras. Discretion is part of what you are booking.</p>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: 40px 1fr; gap: 24px; padding: 30px 0; border-top: 1px solid rgba(20,17,15,0.12); border-bottom: 1px solid rgba(20,17,15,0.12);">
+        <span style="font-family: 'Playfair Display', serif; font-size: 15px; color: #8d8378;">IV</span>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <h3 style="margin: 0; font-size: 17px; font-weight: 500;">You have a date in mind</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.75; color: #514a44;">A wedding, a season, a check-up that went badly. Tell us the date and we work backwards from it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <sc-if value="{{ showReviews }}" hint-placeholder-val="{{ true }}">
+  <section id="recenzije" data-screen-label="Reviews" style="padding: clamp(80px, 11vw, 150px) 6vw; background: #efece7;">
+    <div style="display: flex; flex-direction: column; gap: 14px; padding-bottom: 56px;">
+      <span style="font-size: 10px; letter-spacing: 0.36em; text-transform: uppercase; color: #8d8378;">Clients</span>
+      <h2 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(28px, 3.6vw, 46px);">What clients say</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: clamp(24px, 2.6vw, 36px); align-items: start;">
+      <figure style="margin: 0; display: flex; flex-direction: column; gap: 18px; padding-top: 26px; border-top: 1px solid rgba(20,17,15,0.18);">
+        <span style="letter-spacing: 0.3em; font-size: 12px; color: #fbbc04;">★★★★★</span>
+        <blockquote style="margin: 0; font-family: 'Playfair Display', serif; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.55; text-wrap: pretty;">"Serious coach, spotless room. Exactly what I was looking for."</blockquote>
+        <figcaption style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #8d8378;">Nathan H. · Google review</figcaption>
+      </figure>
+      <figure style="margin: 0; display: flex; flex-direction: column; gap: 18px; padding-top: 26px; border-top: 1px solid rgba(20,17,15,0.18);">
+        <span style="letter-spacing: 0.3em; font-size: 12px; color: #fbbc04;">★★★★★</span>
+        <blockquote style="margin: 0; font-family: 'Playfair Display', serif; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.55; text-wrap: pretty;">"Highly recommend. Fast progress, excellent gym and coach."</blockquote>
+        <figcaption style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #8d8378;">Charlotte M. · Google review</figcaption>
+      </figure>
+      <figure style="margin: 0; display: flex; flex-direction: column; gap: 18px; padding-top: 26px; border-top: 1px solid rgba(20,17,15,0.18);">
+        <span style="letter-spacing: 0.3em; font-size: 12px; color: #fbbc04;">★★★★★</span>
+        <blockquote style="margin: 0; font-family: 'Playfair Display', serif; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.55; text-wrap: pretty;">"First gym where nobody looked at me. Highly recommended."</blockquote>
+        <figcaption style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #8d8378;">Ivy P. · Google review</figcaption>
+      </figure>
+      <figure style="margin: 0; display: flex; flex-direction: column; gap: 18px; padding-top: 26px; border-top: 1px solid rgba(20,17,15,0.18);">
+        <span style="letter-spacing: 0.3em; font-size: 12px; color: #fbbc04;">★★★★★</span>
+        <blockquote style="margin: 0; font-family: 'Playfair Display', serif; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.55; text-wrap: pretty;">"Would definitely recommend - a responsible and dedicated trainer."</blockquote>
+        <figcaption style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #8d8378;">Daniel K. · Google review</figcaption>
+      </figure>
+    </div>
+  </section>
+  </sc-if>
+
+  <section id="lokacija" data-screen-label="Hours and location" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: clamp(40px, 6vw, 90px); padding: clamp(80px, 12vw, 160px) 6vw;">
+    <div style="display: flex; flex-direction: column; gap: 34px;">
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <span style="font-size: 10px; letter-spacing: 0.36em; text-transform: uppercase; color: #8d8378;">Hours</span>
+        <h2 style="margin: 0; font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(28px, 3.4vw, 44px)">When and where</h2>
+      </div>
+      <div style="display: flex; flex-direction: column;">
+        <div style="display: flex; justify-content: space-between; gap: 20px; padding: 15px 0; border-top: 1px solid rgba(20,17,15,0.12); font-size: 14px;"><span>Monday - Friday</span><span style="color: #514a44;">8:00 AM - 9:00 PM</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 20px; padding: 15px 0; border-top: 1px solid rgba(20,17,15,0.12); font-size: 14px;"><span>Saturday</span><span style="color: #514a44;">9:00 AM - 4:00 PM</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 20px; padding: 15px 0; border-top: 1px solid rgba(20,17,15,0.12); border-bottom: 1px solid rgba(20,17,15,0.12); font-size: 14px;"><span>Sunday</span><span style="color: #8d8378;">Closed</span></div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <span style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #8d8378;">Address</span>
+        <p style="margin: 0; font-size: 17px; line-height: 1.6;">27 Kings Road<br>Chelsea, London SW3 4RP</p>
+        <p style="margin: 0; font-size: 13px; line-height: 1.7; color: #514a44;">Appointment only. Ring the buzzer marked Ferum.</p>
+      </div>
+      <a href="{{ mapHref }}" target="_blank" rel="noopener" style="align-self: flex-start; display: inline-flex; align-items: center; padding: 14px 26px; min-height: 46px; border: 1px solid #14110f; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;" style-hover="background: #14110f; color: #f7f6f4;">Open in Google Maps</a>
+    </div>
+    <a href="{{ mapHref }}" target="_blank" rel="noopener" style="position: relative; display: block; min-height: 420px; border: 1px solid rgba(20,17,15,0.12); overflow: hidden;">
+      <image-slot id="ferum-map" src="uploads/map-location.jpg" shape="rect" fit="cover" radius="0" placeholder="map of the studio location"></image-slot>
+    </a>
+  </section>
+
+  <section id="kontakt" data-screen-label="Contact" style="padding: clamp(80px, 12vw, 160px) 6vw; background: #14110f; color: #f7f6f4;">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center; padding-bottom: 64px;">
+      <span style="font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: #c9bea5;">Booking</span>
+      <h2 style="margin: 0; max-width: 780px; font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(32px, 5vw, 64px); line-height: 1.1;">Take an hour that is yours</h2>
+
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 1px; background: rgba(247,246,244,0.16);">
+      <a href="{{ telHref }}" style="display: flex; flex-direction: column; gap: 12px; padding: 40px 34px; background: #14110f; color: #f7f6f4;" style-hover="background: #f7f6f4; color: #14110f;">
+        <span style="font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: #c9bea5;">Phone</span>
+        <span style="font-family: 'Playfair Display', serif; font-size: clamp(22px, 2.2vw, 30px);">{{ phone }}</span>
+      </a>
+      <a href="{{ smsHref }}" style="display: flex; flex-direction: column; gap: 12px; padding: 40px 34px; background: #14110f; color: #f7f6f4;" style-hover="background: #f7f6f4; color: #14110f;">
+        <span style="font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: #c9bea5;">Text</span>
+        <span style="font-family: 'Playfair Display', serif; font-size: clamp(22px, 2.2vw, 30px);">Send a message</span>
+      </a>
+      <a href="{{ igHref }}" target="_blank" rel="noopener" style="display: flex; flex-direction: column; gap: 12px; padding: 40px 34px; background: #14110f; color: #f7f6f4;" style-hover="background: #f7f6f4; color: #14110f;">
+        <span style="font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: #c9bea5;">Instagram</span>
+        <span style="font-family: 'Playfair Display', serif; font-size: clamp(22px, 2.2vw, 30px);">{{ instagram }}</span>
+      </a>
+    </div>
+  </section>
+
+  <footer style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; padding: 44px 6vw; background: #f7f6f4;">
+    <div style="display: flex; flex-direction: column; gap: 4px;">
+      <span style="font-family: 'Playfair Display', serif; font-weight: 700; font-size: 18px; letter-spacing: 0.16em;">FERUM</span>
+      <span style="font-size: 8px; letter-spacing: 0.34em; text-transform: uppercase; color: #8d8378;">Designed for Power</span>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 28px; font-size: 12px; letter-spacing: 0.08em; color: #514a44;">
+      <span>27 Kings Road, Chelsea, London SW3 4RP</span>
+      <a href="{{ telHref }}" style="color: inherit;">{{ phone }}</a>
+      <a href="{{ igHref }}" target="_blank" rel="noopener" style="color: inherit;">{{ instagram }}</a>
+    </div>
+    <p style="margin: 0; flex-basis: 100%; padding-top: 20px; border-top: 1px solid rgba(20,17,15,0.12); font-size: 12px; line-height: 1.7; color: #8d8378;">We only book sessions by phone, text or Instagram DM - there's no online booking.</p>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;phone&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;020 7946 0192&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;},&quot;instagram&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;@ferum.studio&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;},&quot;showReviews&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    const q = (n) => document.querySelector('[data-nav="' + n + '"]');
+    const apply = () => {
+      const hero = document.getElementById("hero");
+      const root = q("root");
+      if (!hero || !root) return;
+      const overHero = hero.getBoundingClientRect().bottom > root.offsetHeight;
+      root.style.background = overHero ? "#16150f" : "rgba(247,246,244,0.88)";
+      root.style.borderBottomColor = overHero ? "transparent" : "rgba(20,17,15,0.08)";
+      const brand = q("brand"), tag = q("tag"), links = q("links"), cta = q("cta");
+      if (brand) brand.style.color = overHero ? "#f7f6f4" : "#14110f";
+      if (tag) tag.style.color = overHero ? "rgba(247,246,244,0.6)" : "#8d8378";
+      if (links) links.style.color = overHero ? "rgba(247,246,244,0.78)" : "#514a44";
+      if (cta) {
+        cta.style.background = overHero ? "#c9bea5" : "#14110f";
+        cta.style.color = overHero ? "#16150f" : "#c9bea5";
+      }
+    };
+    this._onScroll = apply;
+    window.addEventListener("scroll", apply, { passive: true });
+    window.addEventListener("resize", apply);
+    apply();
+  }
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this._onScroll);
+    window.removeEventListener("resize", this._onScroll);
+  }
+  renderVals() {
+    const phone = this.props.phone ?? "020 7946 0192";
+    const instagram = this.props.instagram ?? "@ferum.studio";
+    const digits = "+44" + phone.replace(/\D/g, "").replace(/^0/, "");
+    return {
+      phone,
+      instagram,
+      telHref: "tel:" + digits,
+      smsHref: "sms:" + digits,
+      igHref: "https://instagram.com/" + instagram.replace(/^@/, ""),
+      mapHref: "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("27 Kings Road, Chelsea, London SW3 4RP"),
+      showReviews: this.props.showReviews ?? true,
+    };
+  }
+}
+</script>
+</body>
+</html>
