@@ -13,14 +13,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Manrope:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
 <script src="./image-slot.js"></script>
 <style>
-  html, body { margin: 0; padding: 0; background: #f7f6f4; }
+  html { overflow-x: clip; }
+  html, body { margin: 0; padding: 0; background: #f7f6f4; -webkit-text-size-adjust: 100%; }
   * { box-sizing: border-box; }
+  img, svg, video, image-slot { max-width: 100%; }
+  section > *, section > * > * { min-width: 0; }
+  [data-nav="burger"] { display: none; }
+  @media (max-width: 768px) {
+    [data-nav="root"] { padding: 12px 6vw; flex-wrap: nowrap; }
+    [data-nav="links"] { display: none !important; }
+    [data-nav="cta"] { display: none !important; }
+    [data-nav="tag"] { display: none !important; }
+    [data-nav="brand"] span { font-size: 18px; }
+    [data-nav="burger"] { display: inline-flex !important; }
+  }
   a { color: #14110f; text-decoration: none; }
   a:hover { color: #8d8378; }
   ::selection { background: #14110f; color: #f7f6f4; }
 </style>
 </helmet>
-<div style="font-family: Manrope, system-ui, sans-serif; color: #14110f; background: #f7f6f4; overflow-x: hidden;">
+<div style="font-family: Manrope, system-ui, sans-serif; color: #14110f; background: #f7f6f4; width: 100%; overflow-x: clip;">
 
   <header style="position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 18px 6vw; flex-wrap: wrap; background: #16150f; backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: background 0.25s ease, border-color 0.25s ease;" data-nav="root">
     <a href="#hero" data-nav="brand" style="display: flex; flex-direction: column; gap: 2px; line-height: 1; color: #f7f6f4;">
@@ -34,7 +46,25 @@
         <a href="#lokacija" style="color: inherit;">Visit</a>
       </div>
       <a href="{{ telHref }}" data-nav="cta" style="display: inline-flex; align-items: center; padding: 12px 22px; min-height: 44px; background: #c9bea5; color: #16150f; border: none; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase" style-hover="background: #f7f6f4; color: #16150f;">Book a session</a>
+      <button type="button" data-nav="burger" onClick="{{ toggleMenu }}" aria-label="Menu" aria-expanded="{{ menuOpen }}" style="display: none; align-items: center; justify-content: center; width: 44px; height: 44px; margin-right: -10px; padding: 0; background: none; border: none; cursor: pointer; color: #f7f6f4;">
+        <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 4 L16 16 M16 4 L4 16"></path></svg>
+        </sc-if>
+        <sc-if value="{{ menuClosed }}" hint-placeholder-val="{{ true }}">
+          <svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 1 H22 M0 7 H22 M0 13 H22"></path></svg>
+        </sc-if>
+      </button>
     </nav>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="position: absolute; top: 100%; left: 0; right: 0; display: flex; flex-direction: column; padding: 8px 6vw 28px; background: #16150f; border-top: 1px solid rgba(247,246,244,0.12);">
+        <a href="#o-nama" onClick="{{ closeMenu }}" style="display: flex; align-items: center; min-height: 56px; font-family: 'Playfair Display', serif; font-size: 22px; color: #f7f6f4; border-bottom: 1px solid rgba(247,246,244,0.12);">Studio</a>
+        <a href="#usluge" onClick="{{ closeMenu }}" style="display: flex; align-items: center; min-height: 56px; font-family: 'Playfair Display', serif; font-size: 22px; color: #f7f6f4; border-bottom: 1px solid rgba(247,246,244,0.12);">Training</a>
+        <a href="#recenzije" onClick="{{ closeMenu }}" style="display: flex; align-items: center; min-height: 56px; font-family: 'Playfair Display', serif; font-size: 22px; color: #f7f6f4; border-bottom: 1px solid rgba(247,246,244,0.12);">Clients</a>
+        <a href="#lokacija" onClick="{{ closeMenu }}" style="display: flex; align-items: center; min-height: 56px; font-family: 'Playfair Display', serif; font-size: 22px; color: #f7f6f4; border-bottom: 1px solid rgba(247,246,244,0.12);">Visit</a>
+        <a href="{{ telHref }}" onClick="{{ closeMenu }}" style="display: flex; align-items: center; justify-content: center; min-height: 52px; margin-top: 22px; background: #c9bea5; color: #16150f; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;">Call {{ phone }}</a>
+        <a href="{{ igHref }}" target="_blank" rel="noopener" onClick="{{ closeMenu }}" style="display: flex; align-items: center; justify-content: center; min-height: 48px; margin-top: 10px; border: 1px solid rgba(247,246,244,0.35); color: #f7f6f4; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;">{{ instagram }}</a>
+      </div>
+    </sc-if>
   </header>
 
   <section id="hero" data-screen-label="Hero" style="position: relative; height: 88vh; min-height: 560px; display: grid; place-items: center; background: #14110f;">
@@ -258,32 +288,50 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;phone&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;020 7946 0192&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;},&quot;instagram&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;@ferum.studio&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;},&quot;showReviews&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;}}">
 class Component extends DCLogic {
+  state = { menuOpen: false };
   componentDidMount() {
+    // IntersectionObserver instead of a scroll handler: no layout reads per scroll event.
+    const hero = document.getElementById("hero");
     const q = (n) => document.querySelector('[data-nav="' + n + '"]');
-    const apply = () => {
-      const hero = document.getElementById("hero");
-      const root = q("root");
-      if (!hero || !root) return;
-      const overHero = hero.getBoundingClientRect().bottom > root.offsetHeight;
-      root.style.background = overHero ? "#16150f" : "rgba(247,246,244,0.88)";
-      root.style.borderBottomColor = overHero ? "transparent" : "rgba(20,17,15,0.08)";
-      const brand = q("brand"), tag = q("tag"), links = q("links"), cta = q("cta");
-      if (brand) brand.style.color = overHero ? "#f7f6f4" : "#14110f";
-      if (tag) tag.style.color = overHero ? "rgba(247,246,244,0.6)" : "#8d8378";
-      if (links) links.style.color = overHero ? "rgba(247,246,244,0.78)" : "#514a44";
-      if (cta) {
-        cta.style.background = overHero ? "#c9bea5" : "#14110f";
-        cta.style.color = overHero ? "#16150f" : "#c9bea5";
+    const els = { root: q("root"), brand: q("brand"), tag: q("tag"), links: q("links"), cta: q("cta") };
+    if (!hero || !els.root) return;
+    this._dark = null;
+    const paint = (dark) => {
+      if (dark === this._dark) return;
+      this._dark = dark;
+      els.root.style.background = dark ? "#16150f" : "rgba(247,246,244,0.88)";
+      els.root.style.backdropFilter = dark ? "none" : "blur(12px)";
+      els.root.style.borderBottomColor = dark ? "transparent" : "rgba(20,17,15,0.08)";
+      if (els.brand) els.brand.style.color = dark ? "#f7f6f4" : "#14110f";
+      if (els.tag) els.tag.style.color = dark ? "rgba(247,246,244,0.6)" : "#8d8378";
+      if (els.links) els.links.style.color = dark ? "rgba(247,246,244,0.78)" : "#514a44";
+      if (els.cta) {
+        els.cta.style.background = dark ? "#c9bea5" : "#14110f";
+        els.cta.style.color = dark ? "#16150f" : "#c9bea5";
       }
+      const burger = q("burger");
+      if (burger) burger.style.color = dark ? "#f7f6f4" : "#14110f";
     };
-    this._onScroll = apply;
-    window.addEventListener("scroll", apply, { passive: true });
-    window.addEventListener("resize", apply);
-    apply();
+    paint(true);
+    // Cache geometry once (and on resize); the scroll handler reads no layout.
+    let threshold = 0;
+    const measure = () => { threshold = hero.offsetTop + hero.offsetHeight - els.root.offsetHeight; };
+    let queued = false;
+    const onScroll = () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(() => { queued = false; paint(window.scrollY < threshold); });
+    };
+    measure();
+    onScroll();
+    this._onScroll = onScroll;
+    this._onResize = () => { measure(); onScroll(); };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", this._onResize);
   }
   componentWillUnmount() {
     window.removeEventListener("scroll", this._onScroll);
-    window.removeEventListener("resize", this._onScroll);
+    window.removeEventListener("resize", this._onResize);
   }
   renderVals() {
     const phone = this.props.phone ?? "020 7946 0192";
@@ -297,6 +345,10 @@ class Component extends DCLogic {
       igHref: "https://instagram.com/" + instagram.replace(/^@/, ""),
       mapHref: "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("27 Kings Road, Chelsea, London SW3 4RP"),
       showReviews: this.props.showReviews ?? true,
+      menuOpen: this.state.menuOpen,
+      menuClosed: !this.state.menuOpen,
+      toggleMenu: () => this.setState((s) => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
     };
   }
 }
